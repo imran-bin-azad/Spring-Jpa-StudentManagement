@@ -18,12 +18,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/hello")
+@RequestMapping({"/hello"})
 public class HelloController {
     @Autowired
     private StudentService studentService;
 
-	@RequestMapping(value = "/sayHello", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
 		return "hello";
@@ -73,7 +73,9 @@ public class HelloController {
         System.out.println(student3);
 
         List<Student> newStudents = new ArrayList<Student>(Arrays.asList(student, student2, student3));
-        studentService.addMultipleStudents(newStudents);
+
+//        studentService.addMultipleStudents(newStudents);
+        
 //        studentService.addStudent(student);
 //        studentService.addStudent(student2);
 //        studentService.addStudent(student3);

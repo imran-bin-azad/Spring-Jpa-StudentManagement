@@ -1,0 +1,24 @@
+<configuration>
+    <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/home/imran.azad/d-soft/apache-tomcat-7.0.53/logs/student-management.log</file>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-5level %logger{0} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--<logger name="java.net.therap" level="debug">-->
+        <!--<appender-ref ref="console"/>-->
+    <!--</logger>-->
+
+    <root level="info">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

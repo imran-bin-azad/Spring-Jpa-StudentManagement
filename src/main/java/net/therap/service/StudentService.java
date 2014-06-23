@@ -1,12 +1,14 @@
 package net.therap.service;
 
 import net.therap.dao.StudentDao;
-import net.therap.dao.StudentDaoImpl;
 import net.therap.domain.Project;
 import net.therap.domain.Student;
 import net.therap.domain.StudentDetail;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,11 +20,15 @@ import java.util.List;
 @Service
 @Transactional
 public class StudentService {
+    Logger logger = LoggerFactory.getLogger(StudentService.class);
+
     @Autowired
-    @Qualifier("studentDaoImpl")
+    @Qualifier("jpaStudentDaoImpl")
     private StudentDao studentDao;
 
+    @Cacheable(value = "students")
     public List<Student> getAllStudents() {
+        logger.info("getAllStudents");
         return studentDao.getAllStudents();
     }
 

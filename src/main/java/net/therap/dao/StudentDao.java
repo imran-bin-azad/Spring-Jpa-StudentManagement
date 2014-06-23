@@ -1,6 +1,5 @@
 package net.therap.dao;
 
-import net.therap.domain.Project;
 import net.therap.domain.Student;
 import net.therap.domain.StudentDetail;
 

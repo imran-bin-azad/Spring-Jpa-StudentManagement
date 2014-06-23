@@ -21,7 +21,7 @@ public class Student {
     @JoinColumn(name = "student_detail_id")
     private StudentDetail detail;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable( name="student_project",
                 joinColumns={@JoinColumn(name="student_id", referencedColumnName="id")},
                 inverseJoinColumns={@JoinColumn(name="project_id", referencedColumnName="id")})
@@ -65,7 +65,7 @@ public class Student {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", detail=" + detail +
-                ", projects=" + projects +
+//                ", projects=" + projects +
                 '}';
     }
 }
