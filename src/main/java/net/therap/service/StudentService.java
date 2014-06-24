@@ -48,6 +48,10 @@ public class StudentService {
         return studentDao.getProjectsOfStudent(studentId);
     }
 
+    public List<Student> getFriendListOfStudent(int studentId) {
+        return studentDao.getFriendListOfStudent(studentId);
+    }
+
     public StudentDetail getDetailOfStudent(int studentId) {
         return studentDao.getDetailOfStudent(studentId);
     }

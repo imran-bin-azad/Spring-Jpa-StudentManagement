@@ -16,6 +16,7 @@
         ${allStudents}
         ${studentDetail}
         ${projects}
+        ${friends}
     </p>
 </body>
 </html>

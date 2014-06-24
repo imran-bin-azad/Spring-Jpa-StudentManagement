@@ -10,9 +10,11 @@ import java.util.List;
  */
 public interface StudentDao {
     public List<Student> getAllStudents();
+    public Student getStudentById(int studentId);
     public void addStudent(Student newStudent);
     public void addMultipleStudents(List<Student> students);
     public void deleteStudent(Student student);
     public List getProjectsOfStudent(int studentId);
+    public List<Student> getFriendListOfStudent(int studentId);
     public StudentDetail getDetailOfStudent(int studentId);
 }

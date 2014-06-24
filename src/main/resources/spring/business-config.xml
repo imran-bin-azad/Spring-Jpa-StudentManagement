@@ -36,6 +36,12 @@
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- setting maximum upload size in bytes -->
+        <property name="maxUploadSize" value="100000" />
+    </bean>
+
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/student/*"/>

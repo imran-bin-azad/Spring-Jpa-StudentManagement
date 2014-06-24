@@ -28,6 +28,11 @@ public class JpaStudentDaoImpl implements StudentDao {
     }
 
     @Override
+    public Student getStudentById(int studentId) {
+        return entityManager.find(Student.class, studentId);
+    }
+
+    @Override
     public void addStudent(Student newStudent) {
         System.out.println("INSERTING : " + newStudent);
         entityManager.persist(newStudent);
@@ -65,6 +70,15 @@ public class JpaStudentDaoImpl implements StudentDao {
                                                 "FROM Student s JOIN s.projects p " +
                                                 "WHERE s.id=:id")
                                     .setParameter("id", studentId);
+
+        return query.getResultList();
+    }
+
+    public List<Student> getFriendListOfStudent(int studentId) {
+        Query query = entityManager.createQuery("SELECT f " +
+                                                "FROM Student s JOIN s.friends f " +
+                                                "WHERE s.id=:id")
+                                                .setParameter("id", studentId);
 
         return query.getResultList();
     }

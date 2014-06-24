@@ -1,5 +1,6 @@
 package net.therap.controller;
 
+import com.sun.javafx.sg.PGShape;
 import net.therap.controller.util.RedirectUrls;
 import net.therap.domain.Project;
 import net.therap.domain.Student;
@@ -72,6 +73,13 @@ public class StudentController {
     public String getProjects(ModelMap model) {
         List<Project> projects = studentService.getProjectsOfStudent(1);
         model.addAttribute("projects", projects);
+        return "enlistStudents";
+    }
+
+    @RequestMapping(value = "/showFriendList", method = RequestMethod.GET)
+    public String getFriends(ModelMap model) {
+        List<Student> friends = studentService.getFriendListOfStudent(1);
+        model.addAttribute("friends", friends);
         return "enlistStudents";
     }
 }

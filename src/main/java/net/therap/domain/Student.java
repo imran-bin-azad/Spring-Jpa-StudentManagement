@@ -27,6 +27,12 @@ public class Student {
                 inverseJoinColumns={@JoinColumn(name="project_id", referencedColumnName="id")})
     private List<Project> projects;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable( name="friends",
+            joinColumns={@JoinColumn(name="student_id", referencedColumnName="id")},
+            inverseJoinColumns={@JoinColumn(name="friend_id", referencedColumnName="id")})
+    private List<Student> friends;
+
     public int getId() {
         return id;
     }
