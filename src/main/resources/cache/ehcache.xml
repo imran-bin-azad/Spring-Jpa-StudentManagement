@@ -3,13 +3,32 @@
          updateCheck="false">
     <diskStore path="java.io.tmpdir"/>
 
-    <!-- objects are evicted from the cache every 10 minutes -->
     <cache name="students"
-           timeToLiveSeconds="600"
-           maxElementsInMemory="100"
+           timeToLiveSeconds="120"
+           maxElementsInMemory="5"
            eternal="false"
            overflowToDisk="false"
-           maxElementsOnDisk="10000000"
+           maxElementsOnDisk="1000"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1"
+           memoryStoreEvictionPolicy="LRU"/>
+
+    <cache name="studentDetail"
+           timeToLiveSeconds="120"
+           maxElementsInMemory="5"
+           eternal="false"
+           overflowToDisk="false"
+           maxElementsOnDisk="1000"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1"
+           memoryStoreEvictionPolicy="LRU"/>
+
+    <cache name="singleStudent"
+           timeToLiveSeconds="300"
+           maxElementsInMemory="10"
+           eternal="false"
+           overflowToDisk="false"
+           maxElementsOnDisk="1000"
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="1"
            memoryStoreEvictionPolicy="LRU"/>

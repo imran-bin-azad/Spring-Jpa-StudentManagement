@@ -54,6 +54,11 @@ public class JpaStudentDaoImpl implements StudentDao {
     }
 
     @Override
+    public void updateStudent(Student student) {
+        entityManager.merge(student);
+    }
+
+    @Override
     public List<Project> getProjectsOfStudent(int studentId) {
 //        Dont know whats the problem with TypedQuery :/
 //        TypedQuery<Project> query = entityManager.createNamedQuery("SELECT p " +

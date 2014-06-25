@@ -14,6 +14,7 @@ public interface StudentDao {
     public void addStudent(Student newStudent);
     public void addMultipleStudents(List<Student> students);
     public void deleteStudent(Student student);
+    public void updateStudent(Student student);
     public List getProjectsOfStudent(int studentId);
     public List<Student> getFriendListOfStudent(int studentId);
     public StudentDetail getDetailOfStudent(int studentId);

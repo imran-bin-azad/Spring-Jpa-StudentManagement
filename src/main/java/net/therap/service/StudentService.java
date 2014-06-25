@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +33,13 @@ public class StudentService {
         return studentDao.getAllStudents();
     }
 
+    @Cacheable(value = "singleStudent", key = "#studentId")
+    public Student getStudentById(int studentId) {
+        logger.info("getStudentById");
+        return studentDao.getStudentById(studentId);
+    }
+
+    @CacheEvict(value = "students", allEntries = true)
     public void addStudent(Student newStudent) {
         studentDao.addStudent(newStudent);
     }
@@ -44,6 +52,11 @@ public class StudentService {
         studentDao.deleteStudent(student);
     }
 
+    @CacheEvict(value = {"singleStudent", "students"}, key = "#student.id")
+    public void updateStudent(Student student) {
+        studentDao.updateStudent(student);
+    }
+
     public List<Project> getProjectsOfStudent(int studentId) {
         return studentDao.getProjectsOfStudent(studentId);
     }
@@ -52,7 +65,9 @@ public class StudentService {
         return studentDao.getFriendListOfStudent(studentId);
     }
 
+    @Cacheable(value = "studentDetail")
     public StudentDetail getDetailOfStudent(int studentId) {
+        logger.info("getDetailOfStudent");
         return studentDao.getDetailOfStudent(studentId);
     }
 }
